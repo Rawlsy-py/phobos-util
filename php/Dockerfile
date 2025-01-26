@@ -22,8 +22,8 @@ WORKDIR /var/www
 COPY . /var/www
 
 # Install Laravel dependencies
-RUN cd /var/www/ && composer install
+RUN composer install --no-interaction
 
-# Expose port 9000 and start php-fpm server
-EXPOSE 9000
-CMD ["php-fpm"]
+# Expose port 8000 and serve the application
+EXPOSE 8000
+CMD ["php", "artisan", "serve"]
