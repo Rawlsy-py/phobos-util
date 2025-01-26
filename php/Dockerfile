@@ -19,7 +19,7 @@ RUN curl -fsSL https://deb.nodesource.com/setup_22.x | bash - \
 WORKDIR /var/www
 
 # Copy existing application directory contents
-COPY . /var/www
+COPY ../ /var/www
 
 # Install Laravel dependencies
 RUN composer install --no-interaction
