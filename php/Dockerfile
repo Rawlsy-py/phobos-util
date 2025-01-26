@@ -19,7 +19,7 @@ RUN curl -fsSL https://deb.nodesource.com/setup_22.x | bash - \
 WORKDIR /var/www
 
 # Copy composer.json and composer.lock first to leverage Docker cache
-COPY ./composer.json ./composer.lock /var/www/
+COPY ../composer.json ../composer.lock /var/www/
 
 # Install Laravel dependencies
 RUN composer install --no-interaction
