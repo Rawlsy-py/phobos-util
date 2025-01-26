@@ -21,6 +21,8 @@ WORKDIR /var/www
 # Copy existing application directory contents
 COPY ../ /var/www
 
+RUN ls -la
+
 # Install Laravel dependencies
 RUN composer install --no-interaction
 
