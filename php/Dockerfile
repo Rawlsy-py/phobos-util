@@ -18,13 +18,14 @@ RUN curl -fsSL https://deb.nodesource.com/setup_22.x | bash - \
 # Set working directory
 WORKDIR /var/www
 
-# Copy existing application directory contents
-COPY ../ /var/www
-
-RUN ls -la
+# Copy composer.json and composer.lock first to leverage Docker cache
+COPY ./composer.json ./composer.lock /var/www/
 
 # Install Laravel dependencies
 RUN composer install --no-interaction
+
+# Copy existing application directory contents
+COPY ./ /var/www
 
 # Expose port 8000 and serve the application
 EXPOSE 8000
