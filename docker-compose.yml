@@ -1,0 +1,17 @@
+services:
+  app:
+    build:
+      context: ./php
+      dockerfile: Dockerfile
+    container_name: phobos-app
+    working_dir: /var/www
+    volumes:
+      - .:/var/www
+      - ./php/local.ini:/usr/local/etc/php/conf.d/local.ini
+    networks:
+      - proxy
+
+networks:
+  default:
+    external: true
+    name: proxy
